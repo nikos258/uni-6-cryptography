@@ -7,7 +7,7 @@ char_to_num = {
     'P': '01111', 'Q': '10000', 'R': '10001', 'S': '10010', 'T': '10011',
     'U': '10100', 'V': '10101', 'W': '10110', 'X': '10111', 'Y': '11000',
     'Z': '11001', '.': '11010', '!': '11011', '?': '11100', '(': '11101',
-    ')': '11110', ' ': '11111'
+    ')': '11110', '-': '11111'
 }
 
 num_to_char = {
@@ -17,7 +17,7 @@ num_to_char = {
     '01111': 'P', '10000': 'Q', '10001': 'R', '10010': 'S', '10011': 'T',
     '10100': 'U', '10101': 'V', '10110': 'W', '10111': 'X', '11000': 'Y',
     '11001': 'Z', '11010': '.', '11011': '!', '11100': '?', '11101': '(',
-    '11110': ')', '11111': ' '
+    '11110': ')', '11111': '-'
 }
 # dictionaries made by Chat GPT
 
@@ -54,7 +54,7 @@ def encode(string):
     :return: a string of bits
     """
     encoded = ""
-    for letter in string:
+    for letter in string.replace(' ', ''):
         encoded += char_to_num[letter]
     return encoded
 
@@ -67,7 +67,7 @@ def encrypt(key, message):
     :return: the ciphertext
     """
     ciphertext = ""
-    length = len(encoded)
+    length = len(message)
     for i in range(length):
         ciphertext += xor(key[i], message[i])
     return ciphertext
@@ -102,19 +102,24 @@ def decode(bit_stream):
     return decoded
 
 
-m = "THESSALONIKI MOU"
+def main():
+    m = "THESSALONIKI MOU"
 
-encoded = encode(m)
-print(encoded)
+    encoded = encode(m)
+    print(encoded)
 
-k = produce_key(len(encoded))
-print(k)
+    k = produce_key(len(encoded))
+    print(k)
 
-c = encrypt(k, encoded)
-print(c)
+    c = encrypt(k, encoded)
+    print(c)
 
-decrypted = decrypt(k, c)
-print(decrypted)
+    decrypted = decrypt(k, c)
+    print(decrypted)
 
-received_message = decode(decrypted)
-print(received_message)
+    received_message = decode(decrypted)
+    print(received_message)
+
+
+if __name__ == '__main__':
+    main()

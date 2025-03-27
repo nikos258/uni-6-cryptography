@@ -30,6 +30,4 @@ for letter in cipher:
         message += d2[idx]
 
 print(message)
-print(d1, d2, sep="\n")
-
-print("Hello")
+# print(d1, d2, sep="\n")
