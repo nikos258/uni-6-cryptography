@@ -27,19 +27,24 @@ def sbox(i):
     return format(table[row][col], '0' + str(m) + 'b')
 
 
-diff = -1
-for x in range(1, 2 ** n):
-    x1 = format(x, '0' + str(n) + 'b')  # converts to a string of the binary number
-    for y in range(2 ** m):
-        y1 = format(y, '0' + str(m) + 'b')
+def main():
+    diff = -1
+    for x in range(1, 2 ** n):
+        x1 = format(x, '0' + str(n) + 'b')  # converts to a string of the binary number
+        for y in range(2 ** m):
+            y1 = format(y, '0' + str(m) + 'b')
 
-        cardinality = 0  # the cardinality of the set
-        for z in range(2 ** n):
-            z1 = format(z, '0' + str(n) + 'b')
-            result = xor(sbox(xor(z1, x1)), sbox(z1))
-            if result == y1:
-                cardinality += 1
-        if cardinality > diff:  # finds the maximum of the cardinalities
-            diff = cardinality
+            cardinality = 0  # the cardinality of the set
+            for z in range(2 ** n):
+                z1 = format(z, '0' + str(n) + 'b')
+                result = xor(sbox(xor(z1, x1)), sbox(z1))
+                if result == y1:
+                    cardinality += 1
+            if cardinality > diff:  # finds the maximum of the cardinalities
+                diff = cardinality
 
-print('The differential uniformity is', diff)
+    print('The differential uniformity is', diff)
+
+
+if __name__ == '__main__':
+    main()
