@@ -1,3 +1,4 @@
+# 4.8 (50) avalanche effect on AES-128
 from Crypto.Cipher import AES  # pip install pycryptodome
 import random
 
@@ -64,12 +65,12 @@ def avalanche_effect_AES_ECB():
     sum1 = 0
     for i in range(iterations):
         key = bytes(tuple(random.randint(0, 255) for _ in range(16)))  # random key (16 bytes)
-        cipher = AES.new(key=key, mode=AES.MODE_ECB)  # initialization object of AES-128
+        aes_object = AES.new(key=key, mode=AES.MODE_ECB)  # initialization object of AES-128
 
         m1, m2 = prepare_messages()
 
-        ciphertext1 = cipher.encrypt(m1)
-        ciphertext2 = cipher.encrypt(m2)
+        ciphertext1 = aes_object.encrypt(m1)
+        ciphertext2 = aes_object.encrypt(m2)
 
         sum1 += process_ciphertexts(ciphertext1, ciphertext2)
 
@@ -87,12 +88,12 @@ def avalanche_effect_AES_CBC():
     sum1 = 0
     for i in range(iterations):
         key = bytes(tuple(random.randint(0, 255) for _ in range(16)))  # random key (16 bytes)
-        cipher = AES.new(key=key, mode=AES.MODE_CBC)  # initialization object of AES-128, the iv is random
+        aes_object = AES.new(key=key, mode=AES.MODE_CBC)  # initialization object of AES-128, the iv is random
 
         m1, m2 = prepare_messages()
 
-        ciphertext1 = cipher.encrypt(m1)
-        ciphertext2 = cipher.encrypt(m2)
+        ciphertext1 = aes_object.encrypt(m1)
+        ciphertext2 = aes_object.encrypt(m2)
 
         sum1 += process_ciphertexts(ciphertext1, ciphertext2)
 
