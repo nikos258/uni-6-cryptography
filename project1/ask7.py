@@ -46,7 +46,7 @@ def gen_keystream(s, plen):
 
 message = "MISTAKES ARE AS SERIOUS AS THE RESULTS THEY CAUSE".replace(' ', '')
 print("message:", message)
-key = "HOUSE"
+key = "HOUSEHOUSE"
 print("key:", key)
 
 message_bits = ask4.encode(message)

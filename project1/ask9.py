@@ -18,7 +18,7 @@ def calculate_correlation_coefficient(a: int, b: int, s_box) -> int:
     """
     sum1 = 0
     for x in range(2**m):
-        exponent = ask8.xor(format(b*s_box(x), '0'+str(2*m)+'b'), format(a*x, '0'+str(2*m)+'b'))
+        exponent = ask8.xor(format(b * s_box(x), '0' + str(2 * m) + 'b'), format(a * x, '0' + str(2 * m) + 'b'))
         if exponent[-1] == '0':  # exponent of (-1) is even
             sum1 += 1
         else:  # exponent of (-1) is odd

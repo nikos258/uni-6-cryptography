@@ -1,4 +1,4 @@
-# 2.9 (19)
+# 2.3 (19)
 
 # dictionary made by Chat GPT
 letter_frequencies_dict = {
@@ -155,7 +155,7 @@ def decrypt_vigenere(cipher, key):
 
 def main():
     # read the ciphertext from the file
-    with open("extra files/vigenere_ciphertext.txt", 'r') as in_file:
+    with open("extra_files/vigenere_ciphertext.txt", 'r') as in_file:
         ciphertext = in_file.read()
 
     key_length = friedman_method(ciphertext, max_keylength=10)
@@ -170,7 +170,7 @@ def main():
     message = decrypt_vigenere(ciphertext, key)
 
     # write the message in the file
-    with open("extra files/vigenere_plaintext.txt", "w") as out_file:
+    with open("extra_files/vigenere_plaintext.txt", "w") as out_file:
         out_file.write(message)
         print("The message is in \"extra files/vigenere_plaintext.txt\"")
 

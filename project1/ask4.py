@@ -1,3 +1,4 @@
+# 2.6 (20)
 import random
 
 char_to_num = {
