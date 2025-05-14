@@ -1,7 +1,5 @@
 # 7.4 (84)
 import math
-import random
-import sys
 
 
 def fast_exponentiation(b, e, m):
@@ -39,18 +37,14 @@ def karatsuba(x,y,B):
 
 
 if __name__ == '__main__':
+    base = 10
     modulo = 2**107 - 1
 
-    # a = fast_exponentiation(2, 1000, modulo)
-    # b = fast_exponentiation(3, 101, modulo)
-    # c = fast_exponentiation(5, 47, modulo)
+    a = fast_exponentiation(2, 1000, modulo)
+    b = fast_exponentiation(3, 101, modulo)
+    c = fast_exponentiation(5, 47, modulo)
 
-    # mult1 = karatsuba(a, b, 10)
-    # mult2 = karatsuba(mult1, c, 10)
-    # print("The result of the multiplication is:", mult2, sep='\n')
-
-    b = 2
-    e = 5
-    x = fast_exponentiation(b, e, 9)
-    y = b**e % 9
-    print(x, y, x==y, sep='\n')
+    temp_product = karatsuba(a, b, base)
+    product = karatsuba(temp_product, c, base)
+    result = product % modulo
+    print("The result of the multiplication is:", result, sep='\n')
