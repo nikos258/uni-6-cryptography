@@ -16,11 +16,11 @@ def trial_division(n: int):
     while f**2 <= n:
         if n % f == 0:
             L.append(f)
-            n = n / f
+            n = n // f  # floor division to avoid problems when dividing very large numbers
         else:
             f = f + 2
     if n != 1:
-        L.append(int(n))
+        L.append(n)
     return L
 
 
