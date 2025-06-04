@@ -28,7 +28,7 @@ def pollard_rho_disc_log(x0, m):
     for i in range(1, m):
         x, ai, bi = f(x, ai, bi)
         y, aj, bj = f(*f(y, aj, bj))
-        if x == y:
+        if x == y and bi%n != bj%n:
             return i, ai, bi, aj, bj
     return None
 
