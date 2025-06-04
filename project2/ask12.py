@@ -16,5 +16,3 @@ if __name__ == '__main__':
     M = tuple(pow(block, d, N) for block in C)
     plaintext = ''.join(chr(block) for block in M)
     print(plaintext)
-
-    # print(f"p={p}\nq={q}\nN={p*q}\nphi={phi}\nd={d}")
